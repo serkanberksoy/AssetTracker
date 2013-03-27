@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Namespace="LightSwitchApplication" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="Office">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Location" Type="Edm.String" MaxLength="255" />
+    <Property Name="CreateDate" Type="Edm.DateTime" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="LightSwitchApplication.User_Office" ToRole="User" FromRole="Office" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <NavigationProperty Name="Users" Relationship="LightSwitchApplication.User_UserType" ToRole="User" FromRole="UserType" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="CreateDate" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="User_Office" Type="Edm.Int32" Nullable="false" />
+    <Property Name="User_UserType" Type="Edm.Int32" Nullable="false" />
+    <NavigationProperty Name="Office" Relationship="LightSwitchApplication.User_Office" ToRole="Office" FromRole="User" />
+    <NavigationProperty Name="UserType" Relationship="LightSwitchApplication.User_UserType" ToRole="UserType" FromRole="User" />
+    <NavigationProperty Name="UserAssets" Relationship="LightSwitchApplication.UserAsset_User" ToRole="UserAsset" FromRole="User" />
+  </EntityType>
+  <EntityType Name="Asset">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Barcode" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="StockCount" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Asset_AssetType" Type="Edm.Int32" Nullable="false" />
+    <NavigationProperty Name="AssetType" Relationship="LightSwitchApplication.Asset_AssetType" ToRole="AssetType" FromRole="Asset" />
+    <NavigationProperty Name="UserAssets" Relationship="LightSwitchApplication.UserAsset_Asset" ToRole="UserAsset" FromRole="Asset" />
+    <NavigationProperty Name="Proposals" Relationship="LightSwitchApplication.Proposal_Asset" ToRole="Proposal" FromRole="Asset" />
+  </EntityType>
+  <EntityType Name="AssetType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <NavigationProperty Name="Assets" Relationship="LightSwitchApplication.Asset_AssetType" ToRole="Asset" FromRole="AssetType" />
+  </EntityType>
+  <EntityType Name="UserAsset">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="AssignDate" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="LeaveDate" Type="Edm.DateTime" />
+    <Property Name="UserAsset_User" Type="Edm.Int32" Nullable="false" />
+    <Property Name="UserAsset_Asset" Type="Edm.Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="LightSwitchApplication.UserAsset_User" ToRole="User" FromRole="UserAsset" />
+    <NavigationProperty Name="Asset" Relationship="LightSwitchApplication.UserAsset_Asset" ToRole="Asset" FromRole="UserAsset" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="CreateDate" Type="Edm.DateTime" Nullable="false" />
+    <NavigationProperty Name="Proposal" Relationship="LightSwitchApplication.Supplier_Proposal" ToRole="Proposal" FromRole="Supplier" />
+  </EntityType>
+  <EntityType Name="Proposal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CreateDate" Type="Edm.DateTime" Nullable="false" />
+    <Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ProposalDatePrice" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Proposal_Asset" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Supplier_Proposal" Type="Edm.Int32" Nullable="false" />
+    <Property Name="Proposal_Currency" Type="Edm.Int32" Nullable="false" />
+    <NavigationProperty Name="Asset" Relationship="LightSwitchApplication.Proposal_Asset" ToRole="Asset" FromRole="Proposal" />
+    <NavigationProperty Name="Supplier" Relationship="LightSwitchApplication.Supplier_Proposal" ToRole="Supplier" FromRole="Proposal" />
+    <NavigationProperty Name="Currency" Relationship="LightSwitchApplication.Proposal_Currency" ToRole="Currency" FromRole="Proposal" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Edm.Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="Edm.Binary" Nullable="false" ConcurrencyMode="Fixed" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="255" />
+    <Property Name="CurrentRate" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="Proposals" Relationship="LightSwitchApplication.Proposal_Currency" ToRole="Proposal" FromRole="Currency" />
+  </EntityType>
+  <Association Name="User_Office">
+    <End Role="Office" Type="LightSwitchApplication.Office" Multiplicity="1" />
+    <End Role="User" Type="LightSwitchApplication.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Office">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="User_Office" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User_UserType">
+    <End Role="UserType" Type="LightSwitchApplication.UserType" Multiplicity="1" />
+    <End Role="User" Type="LightSwitchApplication.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="User_UserType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Asset_AssetType">
+    <End Role="AssetType" Type="LightSwitchApplication.AssetType" Multiplicity="1" />
+    <End Role="Asset" Type="LightSwitchApplication.Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="Asset_AssetType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserAsset_User">
+    <End Role="User" Type="LightSwitchApplication.User" Multiplicity="1" />
+    <End Role="UserAsset" Type="LightSwitchApplication.UserAsset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserAsset">
+        <PropertyRef Name="UserAsset_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserAsset_Asset">
+    <End Role="Asset" Type="LightSwitchApplication.Asset" Multiplicity="1" />
+    <End Role="UserAsset" Type="LightSwitchApplication.UserAsset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserAsset">
+        <PropertyRef Name="UserAsset_Asset" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Proposal_Asset">
+    <End Role="Asset" Type="LightSwitchApplication.Asset" Multiplicity="1" />
+    <End Role="Proposal" Type="LightSwitchApplication.Proposal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proposal">
+        <PropertyRef Name="Proposal_Asset" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Supplier_Proposal">
+    <End Role="Supplier" Type="LightSwitchApplication.Supplier" Multiplicity="1" />
+    <End Role="Proposal" Type="LightSwitchApplication.Proposal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proposal">
+        <PropertyRef Name="Supplier_Proposal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Proposal_Currency">
+    <End Role="Currency" Type="LightSwitchApplication.Currency" Multiplicity="1" />
+    <End Role="Proposal" Type="LightSwitchApplication.Proposal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proposal">
+        <PropertyRef Name="Proposal_Currency" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ApplicationDataObjectContext" m:IsDefaultEntityContainer="true">
+    <EntitySet Name="Offices" EntityType="LightSwitchApplication.Office" />
+    <EntitySet Name="UserTypes" EntityType="LightSwitchApplication.UserType" />
+    <EntitySet Name="Users" EntityType="LightSwitchApplication.User" />
+    <EntitySet Name="Assets" EntityType="LightSwitchApplication.Asset" />
+    <EntitySet Name="AssetTypes" EntityType="LightSwitchApplication.AssetType" />
+    <EntitySet Name="UserAssets" EntityType="LightSwitchApplication.UserAsset" />
+    <EntitySet Name="Suppliers" EntityType="LightSwitchApplication.Supplier" />
+    <EntitySet Name="Proposals" EntityType="LightSwitchApplication.Proposal" />
+    <EntitySet Name="Currencies" EntityType="LightSwitchApplication.Currency" />
+    <AssociationSet Name="User_Office" Association="LightSwitchApplication.User_Office">
+      <End Role="Office" EntitySet="Offices" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="User_UserType" Association="LightSwitchApplication.User_UserType">
+      <End Role="UserType" EntitySet="UserTypes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Asset_AssetType" Association="LightSwitchApplication.Asset_AssetType">
+      <End Role="AssetType" EntitySet="AssetTypes" />
+      <End Role="Asset" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="UserAsset_User" Association="LightSwitchApplication.UserAsset_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserAsset" EntitySet="UserAssets" />
+    </AssociationSet>
+    <AssociationSet Name="UserAsset_Asset" Association="LightSwitchApplication.UserAsset_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="UserAsset" EntitySet="UserAssets" />
+    </AssociationSet>
+    <AssociationSet Name="Proposal_Asset" Association="LightSwitchApplication.Proposal_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Proposal" EntitySet="Proposals" />
+    </AssociationSet>
+    <AssociationSet Name="Supplier_Proposal" Association="LightSwitchApplication.Supplier_Proposal">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="Proposal" EntitySet="Proposals" />
+    </AssociationSet>
+    <AssociationSet Name="Proposal_Currency" Association="LightSwitchApplication.Proposal_Currency">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="Proposal" EntitySet="Proposals" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -8,10 +8,6 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectDependencies) = postSolution
-		{1BE5D6D5-B3D8-44CD-9A00-038794545B10}.0 = {54DCF647-D03E-4540-B482-579CF6303D8E}
-		{1BE5D6D5-B3D8-44CD-9A00-038794545B10}.1 = {4AA3F9E6-96D9-420B-8BFB-DC8BBC82A13B}
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3CC150B1-2E76-4734-9559-E6743A00FD49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3CC150B1-2E76-4734-9559-E6743A00FD49}.Debug|Any CPU.Build.0 = Debug|Any CPU

@@ -1,22 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModelFragment xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
   <Application
-    DefaultNavigationItem="!module/NavigationItems[Tasks]"
     Name="LightSwitchApplication"
-    Shell="Microsoft.LightSwitch.Cosmopolitan:CosmopolitanShell"
-    Theme="Microsoft.LightSwitch.Cosmopolitan:CosmopolitanTheme"
+    Shell=":Standard"
+    Theme=":Blue"
     Version="1.0.0.0">
     <Application.Attributes>
       <ModuleNamespace
         Namespace="LightSwitchApplication" />
     </Application.Attributes>
+    <Application.Methods>
+      <ApplicationMethod
+        Name="ShowCreateNewUser">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod
+            TargetScreen="CreateNewUser" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+      <ApplicationMethod
+        Name="ShowEditableGridCurrency">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod
+            TargetScreen="EditableGridCurrency" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+    </Application.Methods>
     <Application.NavigationItems>
       <ApplicationNavigationGroup
+        DefaultItem="!module/NavigationItems[Tasks]/Children[CreateNewUser]"
         Name="Tasks">
         <ApplicationNavigationGroup.Attributes>
           <DisplayName
             Value="Tasks" />
         </ApplicationNavigationGroup.Attributes>
+        <ApplicationNavigationLink
+          Command="!module/Commands[ScreenCommandShowCreateNewUser]"
+          Name="CreateNewUser" />
+        <ApplicationNavigationLink
+          Command="!module/Commands[ScreenCommandShowEditableGridCurrency]"
+          Name="EditableGridCurrency" />
       </ApplicationNavigationGroup>
       <ApplicationNavigationGroup
         Name="Administration">
@@ -32,5 +54,403 @@
           Name="UsersScreen" />
       </ApplicationNavigationGroup>
     </Application.NavigationItems>
+    <ApplicationCommand
+      Name="ScreenCommandShowCreateNewUser"
+      Target="!module/Methods[ShowCreateNewUser]" />
+    <ApplicationCommand
+      Name="ScreenCommandShowEditableGridCurrency"
+      Target="!module/Methods[ShowEditableGridCurrency]" />
   </Application>
+  <Screen
+    LaunchMode="Multiple"
+    Name="CreateNewUser">
+    <Screen.Attributes>
+      <SaveChangesTo
+        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod
+        Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+          <ImageResource
+            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod
+        Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+          <ImageResource
+            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod
+        Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenProperty
+        Name="UserProperty"
+        PropertyType="LightSwitchCommonModule:User" />
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem
+        Kind="Screen"
+        Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem
+            Kind="Command"
+            Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="CreateNewUser/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem
+            Kind="Command"
+            Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="CreateNewUser/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem
+          Kind="Group"
+          Name="ScreenLayout">
+          <ContentItem.PropertySources>
+            <ControlPropertySource
+              Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <ConstantExpression
+                    ResultType=":Boolean"
+                    Value="True" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ControlPropertySource>
+          </ContentItem.PropertySources>
+          <ContentItem
+            DataType="LightSwitchCommonModule:User"
+            Kind="Details"
+            Name="details"
+            View="Microsoft.LightSwitch:RowsLayout">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="CreateNewUser/Properties[UserProperty]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property=":RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      ResultType=":String"
+                      Value="Top" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem
+              DataType=":String"
+              Kind="Value"
+              Name="Name">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="LightSwitchCommonModule:User/Properties[Name]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+            </ContentItem>
+            <ContentItem
+              DataType="LightSwitchCommonModule:UserType"
+              Kind="Details"
+              Name="UserType">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="LightSwitchCommonModule:User/Properties[UserType]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                DataType="LightSwitchCommonModule:UserType"
+                Kind="Details"
+                Name="RowTemplate1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+            <ContentItem
+              DataType="LightSwitchCommonModule:Office"
+              Kind="Details"
+              Name="Office">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="LightSwitchCommonModule:User/Properties[Office]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                DataType="LightSwitchCommonModule:Office"
+                Kind="Details"
+                Name="RowTemplate">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+            <ContentItem
+              DataType=":String"
+              Kind="Value"
+              Name="CreateDate">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="LightSwitchCommonModule:User/Properties[CreateDate]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+  <Screen
+    Name="EditableGridCurrency">
+    <Screen.Attributes>
+      <SaveChangesTo
+        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod
+        Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+          <ImageResource
+            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod
+        Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+          <ImageResource
+            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod
+        Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty
+        Name="Currencies"
+        PageSize="45"
+        PropertyType="LightSwitchCommonModule:CollectionView$Currency">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="CurrenciesQuery"
+            ReturnType="LightSwitchCommonModule:Currency*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression
+                  Member="LightSwitchCommonModule:ApplicationData/Members[Currencies]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="EditableGridCurrency/Properties[Currencies]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem
+        Kind="Screen"
+        Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem
+            Kind="Command"
+            Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="EditableGridCurrency/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem
+            Kind="Command"
+            Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="EditableGridCurrency/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem
+          Kind="Group"
+          Name="ScreenLayout">
+          <ContentItem
+            DataType="LightSwitchCommonModule:CollectionView$Currency"
+            Kind="Collection"
+            Name="grid">
+            <ContentItem.CommandItems>
+              <ContentItem
+                Kind="Command"
+                Name="Currencies_AddAndEditNew">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="EditableGridCurrency/Properties[Currencies]" />
+                      <CallExpression
+                        Target="AddAndEditNew" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Kind="Command"
+                Name="Currencies_EditSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="EditableGridCurrency/Properties[Currencies]" />
+                      <CallExpression
+                        Target="EditSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Kind="Command"
+                Name="Currencies_DeleteSelected">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="EditableGridCurrency/Properties[Currencies]" />
+                      <CallExpression
+                        Target="DeleteSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem.CommandItems>
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="EditableGridCurrency/Properties[Currencies]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property=":RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      ResultType=":String"
+                      Value="Stretch" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property=":RootControl/Properties[AttachedLabelPosition]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      ResultType=":String"
+                      Value="Collapsed" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem
+              DataType="LightSwitchCommonModule:Currency"
+              Kind="Details"
+              Name="RowTemplate">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                DataType=":String"
+                Kind="Value"
+                Name="Name">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Currency/Properties[Name]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
 </ModelFragment>

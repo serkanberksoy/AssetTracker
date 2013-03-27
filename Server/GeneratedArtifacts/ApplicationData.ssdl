@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ApplicationDataStore" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ApplicationDataStore">
+    <EntitySet Name="Offices" EntityType="ApplicationDataStore.Office" store:Type="Tables" Schema="dbo" Table="Offices" />
+    <EntitySet Name="UserTypes" EntityType="ApplicationDataStore.UserType" store:Type="Tables" Schema="dbo" Table="UserTypes" />
+    <EntitySet Name="Users" EntityType="ApplicationDataStore.User" store:Type="Tables" Schema="dbo" Table="Users" />
+    <EntitySet Name="Assets" EntityType="ApplicationDataStore.Asset" store:Type="Tables" Schema="dbo" Table="Assets" />
+    <EntitySet Name="AssetTypes" EntityType="ApplicationDataStore.AssetType" store:Type="Tables" Schema="dbo" Table="AssetTypes" />
+    <EntitySet Name="UserAssets" EntityType="ApplicationDataStore.UserAsset" store:Type="Tables" Schema="dbo" Table="UserAssets" />
+    <EntitySet Name="Suppliers" EntityType="ApplicationDataStore.Supplier" store:Type="Tables" Schema="dbo" Table="Suppliers" />
+    <EntitySet Name="Proposals" EntityType="ApplicationDataStore.Proposal" store:Type="Tables" Schema="dbo" Table="Proposals" />
+    <EntitySet Name="Currencies" EntityType="ApplicationDataStore.Currency" store:Type="Tables" Schema="dbo" Table="Currencies" />
+    <AssociationSet Name="User_Office" Association="ApplicationDataStore.User_Office">
+      <End Role="Office" EntitySet="Offices" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="User_UserType" Association="ApplicationDataStore.User_UserType">
+      <End Role="UserType" EntitySet="UserTypes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Asset_AssetType" Association="ApplicationDataStore.Asset_AssetType">
+      <End Role="AssetType" EntitySet="AssetTypes" />
+      <End Role="Asset" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="UserAsset_User" Association="ApplicationDataStore.UserAsset_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserAsset" EntitySet="UserAssets" />
+    </AssociationSet>
+    <AssociationSet Name="UserAsset_Asset" Association="ApplicationDataStore.UserAsset_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="UserAsset" EntitySet="UserAssets" />
+    </AssociationSet>
+    <AssociationSet Name="Proposal_Asset" Association="ApplicationDataStore.Proposal_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Proposal" EntitySet="Proposals" />
+    </AssociationSet>
+    <AssociationSet Name="Supplier_Proposal" Association="ApplicationDataStore.Supplier_Proposal">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="Proposal" EntitySet="Proposals" />
+    </AssociationSet>
+    <AssociationSet Name="Proposal_Currency" Association="ApplicationDataStore.Proposal_Currency">
+      <End Role="Currency" EntitySet="Currencies" />
+      <End Role="Proposal" EntitySet="Proposals" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Office">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Location" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateDate" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="User_Office" Type="int" Nullable="false" />
+    <Property Name="User_UserType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Asset">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Barcode" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="StockCount" Type="int" Nullable="false" />
+    <Property Name="Asset_AssetType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssetType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UserAsset">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="AssignDate" Type="datetime" Nullable="false" />
+    <Property Name="LeaveDate" Type="datetime" />
+    <Property Name="UserAsset_User" Type="int" Nullable="false" />
+    <Property Name="UserAsset_Asset" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proposal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ProposalDatePrice" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Proposal_Asset" Type="int" Nullable="false" />
+    <Property Name="Supplier_Proposal" Type="int" Nullable="false" />
+    <Property Name="Proposal_Currency" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RowVersion" Type="rowversion" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CurrentRate" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="User_Office">
+    <End Role="Office" Type="ApplicationDataStore.Office" Multiplicity="1" />
+    <End Role="User" Type="ApplicationDataStore.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Office">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="User_Office" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User_UserType">
+    <End Role="UserType" Type="ApplicationDataStore.UserType" Multiplicity="1" />
+    <End Role="User" Type="ApplicationDataStore.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="User_UserType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Asset_AssetType">
+    <End Role="AssetType" Type="ApplicationDataStore.AssetType" Multiplicity="1" />
+    <End Role="Asset" Type="ApplicationDataStore.Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AssetType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="Asset_AssetType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserAsset_User">
+    <End Role="User" Type="ApplicationDataStore.User" Multiplicity="1" />
+    <End Role="UserAsset" Type="ApplicationDataStore.UserAsset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserAsset">
+        <PropertyRef Name="UserAsset_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserAsset_Asset">
+    <End Role="Asset" Type="ApplicationDataStore.Asset" Multiplicity="1" />
+    <End Role="UserAsset" Type="ApplicationDataStore.UserAsset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserAsset">
+        <PropertyRef Name="UserAsset_Asset" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Proposal_Asset">
+    <End Role="Asset" Type="ApplicationDataStore.Asset" Multiplicity="1" />
+    <End Role="Proposal" Type="ApplicationDataStore.Proposal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proposal">
+        <PropertyRef Name="Proposal_Asset" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Supplier_Proposal">
+    <End Role="Supplier" Type="ApplicationDataStore.Supplier" Multiplicity="1" />
+    <End Role="Proposal" Type="ApplicationDataStore.Proposal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proposal">
+        <PropertyRef Name="Supplier_Proposal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Proposal_Currency">
+    <End Role="Currency" Type="ApplicationDataStore.Currency" Multiplicity="1" />
+    <End Role="Proposal" Type="ApplicationDataStore.Proposal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Proposal">
+        <PropertyRef Name="Proposal_Currency" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

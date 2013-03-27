@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Documents>
-    <Document FullPath="P:\Misc\AssetTracker\Client\Properties\Client.lsml" Checksum="793296049518B32580F7C7A91DEC1785634CD985939190029AF687A73996D811" />
-    <Document FullPath="P:\Misc\AssetTracker\Common\Properties\Common.lsml" Checksum="CAFF776B34B3E3619D5F40AFA840716CCCA8835484AF249D9E4C86ADE07706C7" />
+    <Document FullPath="P:\Misc\AssetTracker\Client\Properties\Client.lsml" Checksum="1918FDE2EC2A3E8E638152D7062E3BD1621883CC0A6D775D755D32801A1735F2" />
+    <Document FullPath="P:\Misc\AssetTracker\Common\Properties\Common.lsml" Checksum="BF4C0F92DC6F7129A350C6A2E1EE58E24FF5C3E4D22175A26EE0B125D16D1CA3" />
   </Documents>
 </ModelDocumentManifest>

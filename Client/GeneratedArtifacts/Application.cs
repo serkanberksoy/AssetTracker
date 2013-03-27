@@ -36,6 +36,36 @@ namespace LightSwitchApplication
             }
         }
 
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void CreateNewUser_CanRun(ref bool result);
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void CreateNewUser_Run(ref bool handled);
+    
+        /// <summary>
+        /// Opens a new instance of the ShowCreateNewUser screen.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public void ShowCreateNewUser()
+        {
+            ((global::Microsoft.LightSwitch.Details.Client.IClientApplicationDetails)this.Details).InvokeMethod(this.Details.Methods.ShowCreateNewUser);
+        }
+        
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void EditableGridCurrency_CanRun(ref bool result);
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void EditableGridCurrency_Run(ref bool handled);
+    
+        /// <summary>
+        /// Opens the ShowEditableGridCurrency screen.  If the screen is already opened, it is activated and shown.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public void ShowEditableGridCurrency()
+        {
+            ((global::Microsoft.LightSwitch.Details.Client.IClientApplicationDetails)this.Details).InvokeMethod(this.Details.Methods.ShowEditableGridCurrency);
+        }
+        
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -45,6 +75,8 @@ namespace LightSwitchApplication
 
             static DetailsClass()
             {
+                var initializeCommandEntry = global::LightSwitchApplication.Application.DetailsClass.CommandSetProperties.ShowCreateNewUser;
+                var initializeMethodEntry = global::LightSwitchApplication.Application.DetailsClass.MethodSetProperties.ShowCreateNewUser;
             }
 
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -93,6 +125,10 @@ namespace LightSwitchApplication
             {
                 switch (screenName)
                 {
+                    case "CreateNewUser":
+                        return global::LightSwitchApplication.CreateNewUser.CreateInstance();
+                    case "EditableGridCurrency":
+                        return global::LightSwitchApplication.EditableGridCurrency.CreateInstance();
                 }
             
                 return base.CreateScreen(screenName, args);
@@ -114,6 +150,24 @@ namespace LightSwitchApplication
                 : global::Microsoft.LightSwitch.Details.Framework.Client.ClientApplicationCommandSet<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>
             {
 
+                public global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass> ShowCreateNewUser
+                {
+                    get
+                    {
+                        return (global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>)
+                               base.GetItem(global::LightSwitchApplication.Application.DetailsClass.CommandSetProperties.ShowCreateNewUser);
+                    }
+                }
+
+                public global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass> ShowEditableGridCurrency
+                {
+                    get
+                    {
+                        return (global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>)
+                               base.GetItem(global::LightSwitchApplication.Application.DetailsClass.CommandSetProperties.ShowEditableGridCurrency);
+                    }
+                }
+
             }
 
             [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -122,6 +176,24 @@ namespace LightSwitchApplication
             public sealed class MethodSet
                 : global::Microsoft.LightSwitch.Details.Framework.Client.ClientApplicationMethodSet<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>
             {
+
+                public global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass> ShowCreateNewUser
+                {
+                    get
+                    {
+                        return (global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>)
+                               base.GetItem(global::LightSwitchApplication.Application.DetailsClass.MethodSetProperties.ShowCreateNewUser);
+                    }
+                }
+
+                public global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass> ShowEditableGridCurrency
+                {
+                    get
+                    {
+                        return (global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>)
+                               base.GetItem(global::LightSwitchApplication.Application.DetailsClass.MethodSetProperties.ShowEditableGridCurrency);
+                    }
+                }
 
             }
 
@@ -139,6 +211,34 @@ namespace LightSwitchApplication
             internal sealed class CommandSetProperties
             {
 
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Entry
+                    ShowCreateNewUser = new global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Entry(
+                        "ShowCreateNewUser",
+                        global::LightSwitchApplication.Application.DetailsClass.CommandSetProperties._ShowCreateNewUser_Stub,
+                        global::LightSwitchApplication.Application.DetailsClass.CommandSetProperties._ShowCreateNewUser_CreateExecutableObject);
+                private static void _ShowCreateNewUser_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Application.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Data> c, global::LightSwitchApplication.Application.DetailsClass d, object sf)
+                {
+                    c(d, ref d._ShowCreateNewUserCommand, sf);
+                }
+                private static global::Microsoft.LightSwitch.IExecutable _ShowCreateNewUser_CreateExecutableObject(global::LightSwitchApplication.Application.DetailsClass d)
+                {
+                    return ((global::LightSwitchApplication.Application.DetailsClass)d).Methods.ShowCreateNewUser.CreateInvocation(new object[0]);
+                }
+
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Entry
+                    ShowEditableGridCurrency = new global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Entry(
+                        "ShowEditableGridCurrency",
+                        global::LightSwitchApplication.Application.DetailsClass.CommandSetProperties._ShowEditableGridCurrency_Stub,
+                        global::LightSwitchApplication.Application.DetailsClass.CommandSetProperties._ShowEditableGridCurrency_CreateExecutableObject);
+                private static void _ShowEditableGridCurrency_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Application.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Data> c, global::LightSwitchApplication.Application.DetailsClass d, object sf)
+                {
+                    c(d, ref d._ShowEditableGridCurrencyCommand, sf);
+                }
+                private static global::Microsoft.LightSwitch.IExecutable _ShowEditableGridCurrency_CreateExecutableObject(global::LightSwitchApplication.Application.DetailsClass d)
+                {
+                    return ((global::LightSwitchApplication.Application.DetailsClass)d).Methods.ShowEditableGridCurrency.CreateInvocation(new object[0]);
+                }
+
             }
 
             [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -147,7 +247,67 @@ namespace LightSwitchApplication
             internal sealed class MethodSetProperties
             {
 
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Entry
+                    ShowCreateNewUser = new global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Entry(
+                        "ShowCreateNewUser",
+                        global::LightSwitchApplication.Application.DetailsClass.MethodSetProperties._ShowCreateNewUser_Stub,
+                        global::LightSwitchApplication.Application.DetailsClass.MethodSetProperties._ShowCreateNewUser_CanInvoke,
+                        global::LightSwitchApplication.Application.DetailsClass.MethodSetProperties._ShowCreateNewUser_InvokeMethod);
+                private static void _ShowCreateNewUser_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Application.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Data> c, global::LightSwitchApplication.Application.DetailsClass d, object sf)
+                {
+                    c(d, ref d._ShowCreateNewUserMethod, sf);
+                }
+                private static global::System.Exception _ShowCreateNewUser_CanInvoke(global::LightSwitchApplication.Application.DetailsClass d, global::System.Collections.ObjectModel.ReadOnlyCollection<object> args, global::System.Exception ex)
+                {
+                    bool result = true;
+                    d.Application.CreateNewUser_CanRun(ref result);
+                    return result ? null : ex;
+                }
+                private static void _ShowCreateNewUser_InvokeMethod(global::LightSwitchApplication.Application.DetailsClass d, global::System.Collections.ObjectModel.ReadOnlyCollection<object> args)
+                {
+                    bool handled = false;
+                    d.Application.CreateNewUser_Run(ref handled);
+                    if (!handled)
+                    {
+                        d.ShowScreen("LightSwitchApplication:CreateNewUser", () => global::LightSwitchApplication.CreateNewUser.CreateInstance(), args);
+                    }
+                }
+ 
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Entry
+                    ShowEditableGridCurrency = new global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Entry(
+                        "ShowEditableGridCurrency",
+                        global::LightSwitchApplication.Application.DetailsClass.MethodSetProperties._ShowEditableGridCurrency_Stub,
+                        global::LightSwitchApplication.Application.DetailsClass.MethodSetProperties._ShowEditableGridCurrency_CanInvoke,
+                        global::LightSwitchApplication.Application.DetailsClass.MethodSetProperties._ShowEditableGridCurrency_InvokeMethod);
+                private static void _ShowEditableGridCurrency_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.Application.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Data> c, global::LightSwitchApplication.Application.DetailsClass d, object sf)
+                {
+                    c(d, ref d._ShowEditableGridCurrencyMethod, sf);
+                }
+                private static global::System.Exception _ShowEditableGridCurrency_CanInvoke(global::LightSwitchApplication.Application.DetailsClass d, global::System.Collections.ObjectModel.ReadOnlyCollection<object> args, global::System.Exception ex)
+                {
+                    bool result = true;
+                    d.Application.EditableGridCurrency_CanRun(ref result);
+                    return result ? null : ex;
+                }
+                private static void _ShowEditableGridCurrency_InvokeMethod(global::LightSwitchApplication.Application.DetailsClass d, global::System.Collections.ObjectModel.ReadOnlyCollection<object> args)
+                {
+                    bool handled = false;
+                    d.Application.EditableGridCurrency_Run(ref handled);
+                    if (!handled)
+                    {
+                        d.ShowScreen("LightSwitchApplication:EditableGridCurrency", () => global::LightSwitchApplication.EditableGridCurrency.CreateInstance(), args);
+                    }
+                }
+ 
             }
+
+            private global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Data _ShowCreateNewUserMethod;
+
+            private global::Microsoft.LightSwitch.Details.Framework.ApplicationMethod<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Data _ShowEditableGridCurrencyMethod;
+
+            private global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Data _ShowCreateNewUserCommand;
+
+            private global::Microsoft.LightSwitch.Details.Framework.Base.ApplicationCommand<global::LightSwitchApplication.Application, global::LightSwitchApplication.Application.DetailsClass>.Data _ShowEditableGridCurrencyCommand;
 
         }
     }

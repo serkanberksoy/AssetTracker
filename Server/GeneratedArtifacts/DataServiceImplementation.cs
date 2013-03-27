@@ -11,6 +11,130 @@ using global::System.Linq;
 
 namespace LightSwitchApplication.Implementation
 {
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public class ApplicationDataDataService
+        : global::Microsoft.LightSwitch.ServerGenerated.Implementation.DataService<global::ApplicationData.Implementation.ApplicationDataObjectContext>
+    {
+    
+        public ApplicationDataDataService() : base()
+        {
+        }
+    
+        protected override global::Microsoft.LightSwitch.IDataService CreateDataService()
+        {
+            return new global::LightSwitchApplication.DataWorkspace().ApplicationData;
+        }
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public class ApplicationDataServiceImplementation
+        : global::Microsoft.LightSwitch.ServerGenerated.Implementation.DataServiceImplementation<global::ApplicationData.Implementation.ApplicationDataObjectContext>
+    {
+        public ApplicationDataServiceImplementation(global::Microsoft.LightSwitch.IDataService dataService) : base(dataService)
+        {
+        }
+    
+    #region Queries
+    #endregion
+
+    #region Protected Methods
+        protected override object CreateObject(global::System.Type type)
+        {
+            if (type == typeof(global::ApplicationData.Implementation.Office))
+            {
+                return new global::ApplicationData.Implementation.Office();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.UserType))
+            {
+                return new global::ApplicationData.Implementation.UserType();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.User))
+            {
+                return new global::ApplicationData.Implementation.User();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.Asset))
+            {
+                return new global::ApplicationData.Implementation.Asset();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.AssetType))
+            {
+                return new global::ApplicationData.Implementation.AssetType();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.UserAsset))
+            {
+                return new global::ApplicationData.Implementation.UserAsset();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.Supplier))
+            {
+                return new global::ApplicationData.Implementation.Supplier();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.Proposal))
+            {
+                return new global::ApplicationData.Implementation.Proposal();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.Currency))
+            {
+                return new global::ApplicationData.Implementation.Currency();
+            }
+    
+            return base.CreateObject(type);
+        }
+    
+        protected override global::ApplicationData.Implementation.ApplicationDataObjectContext CreateObjectContext()
+        {
+            string assemblyName = global::System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            return new global::ApplicationData.Implementation.ApplicationDataObjectContext(base.GetEntityConnectionString(
+                "_IntrinsicData", 
+                "res://" + assemblyName + "/ApplicationData.csdl|res://" + assemblyName + "/ApplicationData.ssdl|res://" + assemblyName + "/ApplicationData.msl", 
+                "System.Data.SqlClient"));
+        }
+    
+        protected override global::Microsoft.LightSwitch.Internal.IEntityImplementation CreateEntityImplementation<T>()
+        {
+            if (typeof(T) == typeof(global::LightSwitchApplication.Office))
+            {
+                return new global::ApplicationData.Implementation.Office();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.UserType))
+            {
+                return new global::ApplicationData.Implementation.UserType();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.User))
+            {
+                return new global::ApplicationData.Implementation.User();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.Asset))
+            {
+                return new global::ApplicationData.Implementation.Asset();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.AssetType))
+            {
+                return new global::ApplicationData.Implementation.AssetType();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.UserAsset))
+            {
+                return new global::ApplicationData.Implementation.UserAsset();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.Supplier))
+            {
+                return new global::ApplicationData.Implementation.Supplier();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.Proposal))
+            {
+                return new global::ApplicationData.Implementation.Proposal();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.Currency))
+            {
+                return new global::ApplicationData.Implementation.Currency();
+            }
+            return null;
+        }
+    
+    #endregion
+    
+    }
     
     #region DataServiceImplementationFactory
     [global::System.ComponentModel.Composition.PartCreationPolicy(global::System.ComponentModel.Composition.CreationPolicy.Shared)]
@@ -23,11 +147,19 @@ namespace LightSwitchApplication.Implementation
     
         protected override global::Microsoft.LightSwitch.IDataService CreateDataService(global::System.Type dataServiceType)
         {
+            if (dataServiceType == typeof(global::LightSwitchApplication.ApplicationData))
+            {
+                return new global::LightSwitchApplication.ApplicationDataService();
+            }
             return base.CreateDataService(dataServiceType);
         }
     
         protected override global::Microsoft.LightSwitch.Internal.IDataServiceImplementation CreateDataServiceImplementation<TDataService>(TDataService dataService)
         {
+            if (typeof(TDataService) == typeof(global::LightSwitchApplication.ApplicationData))
+            {
+                return new global::LightSwitchApplication.Implementation.ApplicationDataServiceImplementation(dataService);
+            }
             return base.CreateDataServiceImplementation(dataService);
         }
     }
@@ -42,8 +174,602 @@ namespace LightSwitchApplication.Implementation
     {
         global::System.Type global::Microsoft.LightSwitch.Internal.ITypeMappingProvider.GetImplementationType(global::System.Type definitionType)
         {
+            if (typeof(global::LightSwitchApplication.Office) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.Office);
+            }
+            if (typeof(global::LightSwitchApplication.UserType) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.UserType);
+            }
+            if (typeof(global::LightSwitchApplication.User) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.User);
+            }
+            if (typeof(global::LightSwitchApplication.Asset) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.Asset);
+            }
+            if (typeof(global::LightSwitchApplication.AssetType) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.AssetType);
+            }
+            if (typeof(global::LightSwitchApplication.UserAsset) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.UserAsset);
+            }
+            if (typeof(global::LightSwitchApplication.Supplier) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.Supplier);
+            }
+            if (typeof(global::LightSwitchApplication.Proposal) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.Proposal);
+            }
+            if (typeof(global::LightSwitchApplication.Currency) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.Currency);
+            }
             return null;
         }
     }
+}
+
+namespace ApplicationData.Implementation
+{
+
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class Office :
+        global::LightSwitchApplication.Office.DetailsClass.IImplementation
+    {
+    
+        global::System.Collections.IEnumerable global::LightSwitchApplication.Office.DetailsClass.IImplementation.Users
+        {
+            get
+            {
+                return this.Users;
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class UserType :
+        global::LightSwitchApplication.UserType.DetailsClass.IImplementation
+    {
+    
+        global::System.Collections.IEnumerable global::LightSwitchApplication.UserType.DetailsClass.IImplementation.Users
+        {
+            get
+            {
+                return this.Users;
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class User :
+        global::LightSwitchApplication.User.DetailsClass.IImplementation
+    {
+    
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.User.DetailsClass.IImplementation.Office
+        {
+            get
+            {
+                return this.Office;
+            }
+            set
+            {
+                this.Office = (global::ApplicationData.Implementation.Office)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("Office");
+                }
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.User.DetailsClass.IImplementation.UserType
+        {
+            get
+            {
+                return this.UserType;
+            }
+            set
+            {
+                this.UserType = (global::ApplicationData.Implementation.UserType)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("UserType");
+                }
+            }
+        }
+        
+        global::System.Collections.IEnumerable global::LightSwitchApplication.User.DetailsClass.IImplementation.UserAssets
+        {
+            get
+            {
+                return this.UserAssets;
+            }
+        }
+        
+        partial void OnUser_OfficeChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("Office");
+            }
+        }
+        
+        partial void OnUser_UserTypeChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("UserType");
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class Asset :
+        global::LightSwitchApplication.Asset.DetailsClass.IImplementation
+    {
+    
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Asset.DetailsClass.IImplementation.AssetType
+        {
+            get
+            {
+                return this.AssetType;
+            }
+            set
+            {
+                this.AssetType = (global::ApplicationData.Implementation.AssetType)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("AssetType");
+                }
+            }
+        }
+        
+        global::System.Collections.IEnumerable global::LightSwitchApplication.Asset.DetailsClass.IImplementation.UserAssets
+        {
+            get
+            {
+                return this.UserAssets;
+            }
+        }
+        
+        global::System.Collections.IEnumerable global::LightSwitchApplication.Asset.DetailsClass.IImplementation.Proposals
+        {
+            get
+            {
+                return this.Proposals;
+            }
+        }
+        
+        partial void OnAsset_AssetTypeChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("AssetType");
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class AssetType :
+        global::LightSwitchApplication.AssetType.DetailsClass.IImplementation
+    {
+    
+        global::System.Collections.IEnumerable global::LightSwitchApplication.AssetType.DetailsClass.IImplementation.Assets
+        {
+            get
+            {
+                return this.Assets;
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class UserAsset :
+        global::LightSwitchApplication.UserAsset.DetailsClass.IImplementation
+    {
+    
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.UserAsset.DetailsClass.IImplementation.User
+        {
+            get
+            {
+                return this.User;
+            }
+            set
+            {
+                this.User = (global::ApplicationData.Implementation.User)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("User");
+                }
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.UserAsset.DetailsClass.IImplementation.Asset
+        {
+            get
+            {
+                return this.Asset;
+            }
+            set
+            {
+                this.Asset = (global::ApplicationData.Implementation.Asset)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("Asset");
+                }
+            }
+        }
+        
+        partial void OnUserAsset_UserChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("User");
+            }
+        }
+        
+        partial void OnUserAsset_AssetChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("Asset");
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class Supplier :
+        global::LightSwitchApplication.Supplier.DetailsClass.IImplementation
+    {
+    
+        global::System.Collections.IEnumerable global::LightSwitchApplication.Supplier.DetailsClass.IImplementation.Proposal
+        {
+            get
+            {
+                return this.Proposal;
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class Proposal :
+        global::LightSwitchApplication.Proposal.DetailsClass.IImplementation
+    {
+    
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Proposal.DetailsClass.IImplementation.Asset
+        {
+            get
+            {
+                return this.Asset;
+            }
+            set
+            {
+                this.Asset = (global::ApplicationData.Implementation.Asset)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("Asset");
+                }
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Proposal.DetailsClass.IImplementation.Supplier
+        {
+            get
+            {
+                return this.Supplier;
+            }
+            set
+            {
+                this.Supplier = (global::ApplicationData.Implementation.Supplier)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("Supplier");
+                }
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Proposal.DetailsClass.IImplementation.Currency
+        {
+            get
+            {
+                return this.Currency;
+            }
+            set
+            {
+                this.Currency = (global::ApplicationData.Implementation.Currency)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("Currency");
+                }
+            }
+        }
+        
+        partial void OnProposal_AssetChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("Asset");
+            }
+        }
+        
+        partial void OnSupplier_ProposalChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("Supplier");
+            }
+        }
+        
+        partial void OnProposal_CurrencyChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("Currency");
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "11.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class Currency :
+        global::LightSwitchApplication.Currency.DetailsClass.IImplementation
+    {
+    
+        global::System.Collections.IEnumerable global::LightSwitchApplication.Currency.DetailsClass.IImplementation.Proposals
+        {
+            get
+            {
+                return this.Proposals;
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
 }
 

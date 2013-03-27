@@ -1,11 +1,238 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModelFragment xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model">
-
-  <ServiceApplication Name="LightSwitchServiceApplication"
-                      Version="1.0.0.0">
+  <ServiceApplication
+    Name="LightSwitchServiceApplication"
+    Version="1.0.0.0">
     <ServiceApplication.Attributes>
-      <ModuleNamespace Namespace="LightSwitchApplication" />
+      <ModuleNamespace
+        Namespace="LightSwitchApplication" />
     </ServiceApplication.Attributes>
   </ServiceApplication>
-
+  <DataService
+    DataProvider="EntityFrameworkDataProvider"
+    EntityContainer="LightSwitchCommonModule:ApplicationData"
+    Name="ApplicationDataMapping">
+    <AssociationSetMapping
+      AssociationSet="User_Offices">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="User_Offices" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[User_Offices]/Members[User]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="User_Office" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[User_Offices]/Members[Office]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="Users">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="User_Office"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="User_UserType"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="User_UserTypes">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="User_UserTypes" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[User_UserTypes]/Members[User]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="User_UserType" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[User_UserTypes]/Members[UserType]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="Asset_AssetTypes">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Asset_AssetTypes" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[Asset_AssetTypes]/Members[Asset]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Asset_AssetType" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[Asset_AssetTypes]/Members[AssetType]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="Assets">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="Asset_AssetType"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="UserAsset_Users">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="UserAsset_Users" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[UserAsset_Users]/Members[UserAsset]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="UserAsset_User" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[UserAsset_Users]/Members[User]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="UserAssets">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="UserAsset_User"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="UserAsset_Asset"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="UserAsset_Assets">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="UserAsset_Assets" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[UserAsset_Assets]/Members[UserAsset]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="UserAsset_Asset" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[UserAsset_Assets]/Members[Asset]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="Proposal_Assets">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Proposal_Assets" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[Proposal_Assets]/Members[Proposal]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Proposal_Asset" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[Proposal_Assets]/Members[Asset]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="Proposals">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="Proposal_Asset"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="Supplier_Proposal"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="Proposal_Currency"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="Supplier_Proposals">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Supplier_Proposals" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[Supplier_Proposals]/Members[Supplier]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[Supplier_Proposals]/Members[Proposal]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Supplier_Proposal" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="Suppliers" />
+    <AssociationSetMapping
+      AssociationSet="Proposal_Currencies">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Proposal_Currencies" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[Proposal_Currencies]/Members[Proposal]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Proposal_Currency" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[Proposal_Currencies]/Members[Currency]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
 </ModelFragment>
